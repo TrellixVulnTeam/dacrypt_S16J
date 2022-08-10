@@ -5,12 +5,20 @@ import {BiMenuAltRight} from 'react-icons/bi';
 import {AiOutlineClose} from 'react-icons/ai';
 import {useState} from "react";
 import { useEffect } from "react";
+import { Router, useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
+
+import {
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(true);
+    const router = useRouter();
     const [size, setSize] = useState({
-      width: undefined,
-      height: undefined,
+      width: 300,
+      height: 300,
   });
 
   useEffect(() => {
@@ -38,7 +46,7 @@ const Header = () => {
   return (
     <header className={classes.header}> 
       <div className={classes.header__content}>
-        <h2 className={classes.header__content__logo}>NZA</h2>
+        <h2  onClick={() => router.push('/')} className={classes.header__content__logo}>ENZA</h2>
 
         <nav 
             className={`${classes.header__content__nav} ${menuOpen ? classes.isMenu : ""}`}
@@ -51,10 +59,13 @@ const Header = () => {
                   <a href="#">PageTwo</a>
                 </li>
                 <li>
-                  <a href="#">PageThree</a>
+                  <Link href="/login">PageThree</Link>
+                </li>
+                <li>
+                <FontAwesomeIcon onClick={() => window.location.href = 'https://twitter.com/NzaToken'} className={classes.header__content__nav__awesome} icon={faTwitter} size="xl" />
                 </li>
             </ul>
-            <button>CTA Page</button>
+            <Link href="/login"><button> Sign in</button></Link>
         </nav>
         <div className={classes.header__content__toggle}>
             {!menuOpen ? ( 

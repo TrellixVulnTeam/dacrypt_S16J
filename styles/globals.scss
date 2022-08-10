@@ -20,3 +20,16 @@ a {
 #root {
   height: 100%;
 }
+.resize {
+  width: 100%;
+}
+.subscribe {
+  z-index: 2;
+  position: absolute;
+  top: 15%;
+  right: 13%;
+  padding: 10px;
+}
+.iconcol {
+  color: $primary;
+}
